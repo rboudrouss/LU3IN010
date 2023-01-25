@@ -53,17 +53,25 @@ int main()
 {
     srand(time(NULL));
 
+    printf("Before static allocation ");
+    printMem();
+
     int staTab[NMAX], *dynTab;
     initTab(staTab, NMAX);
-    printTab(staTab, NMAX);
+    // printTab(staTab, NMAX);
+
+    printf("After static allocation ");
+    printMem();
 
     dynTab = malloc(sizeof(int) * NMAX);
+    printf("After malloc allocation ");
+    printMem();
 
     initTab(dynTab, NMAX);
-    printTab(dynTab, NMAX);
+    // printTab(dynTab, NMAX);
 
     free(dynTab);
-
+    printf("After free : ");
     printMem();
 
     return 0;
