@@ -31,14 +31,11 @@ void print_times(char *commande)
 
   clock_t tStart, tEnd;
 
-  times(tms1);
-  lance_commande(commande);
-  times(tms2);
   tStart = times(tms1);
-  tEnd = times(tms2);
+  lance_commande(commande);
+  tEnd= times(tms2);
 
-  printf("%d %d %d %d \n", tms2->tms_utime, tms2->tms_stime, tms2->tms_cutime, tms2->tms_cstime);
-
+  printf("time for %s\n", commande);
   printf("Temps totale: %6.6f\n", (double)(tEnd - tStart) / CLOCKS_PER_SEC);
   printf("Temps utilisateur: %6.6f\n", (double)(tms2->tms_utime - tms1->tms_utime) / CLOCKS_PER_SEC);
   printf("temps système: %6.6f\n", (double)(tms2->tms_stime - tms1->tms_stime) / CLOCKS_PER_SEC);
